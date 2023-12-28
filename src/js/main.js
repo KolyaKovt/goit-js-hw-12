@@ -4,6 +4,9 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 import axios from "axios";
 
+import infoIcon from "/info.svg";
+import errorIcon from "/close-message.svg";
+
 const form = document.getElementById("form");
 const loader = document.querySelector(".loader");
 const input = form.elements.userInput;
@@ -106,7 +109,7 @@ function showError(errorText) {
     maxWidth: "380px",
     messageSize: 16,
     position: "topRight",
-    iconUrl: "/close-message.svg",
+    iconUrl: errorIcon,
     theme: "dark",
     color: "#fff",
     backgroundColor: "#EF4040",
@@ -122,7 +125,7 @@ function showInfo(infoText) {
     maxWidth: "380px",
     messageSize: 16,
     position: "topRight",
-    iconUrl: "/info.svg",
+    iconUrl: infoIcon,
     theme: "dark",
     color: "#fff",
     backgroundColor: "#4e75ff",
