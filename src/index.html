@@ -5,36 +5,35 @@
     <link rel="icon" type="image/svg+xml" href="/javascript.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <!-- Modern Normalize -->
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
-    integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-    <!-- /Modern Normalize -->
     <link rel="stylesheet" href="./css/style.css" />
-    <script src="./js/counter.js" type="module" defer></script>
+    <script src="./js/main.js" type="module" defer></script>
   </head>
   <body>
-    <div id="app">
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="logo" alt="Vite logo" />
-      </a>
-      <a
-        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-        target="_blank"
-      >
-        <img src="/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
-      </a>
-      <h1>Hello Vite!</h1>
-      <div class="card">
-        <button id="counter" type="button"></button>
-      </div>
-      <p class="read-the-docs">
-        Click on the Vite logo to learn more
-      </p>
-    </div>
+    <section class="search-section">
+      <h1 class="visually-hidden">search section</h1>
+      <form class="form" id="form">
+        <input
+          class="input"
+          name="userInput"
+          type="text"
+          placeholder="Search images..."
+        />
+        <button class="btn search-btn" id="search-btn" type="submit">Search</button>
+      </form>
+    </section>
+
+    <section class="search-results-section">
+      <h2 class="visually-hidden">results of the search</h2>
+      <ul class="results-list" id="results"></ul>
+      <button type="button" class="load-more btn" id="more">Load more</button>
+      <div class="loader"></div>
+    </section>
   </body>
 </html>
