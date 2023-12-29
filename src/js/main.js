@@ -12,6 +12,7 @@ const loader = document.querySelector(".loader");
 const input = form.elements.userInput;
 const imagesList = document.getElementById("results");
 const more = document.getElementById("more");
+const topScroll = document.getElementById("top-scroll");
 
 // light create SimpleLightBox
 const lightbox = new SimpleLightbox("#results .card-link", {
@@ -58,7 +59,7 @@ async function onMore() {
   console.log(card);
   window.scrollBy({
     top: cardHeight2X,
-    behavior: "smooth"
+    behavior: "smooth",
   });
 }
 
@@ -167,4 +168,48 @@ function fillImagesList(hits) {
   imagesList.append(...listItems);
 
   lightbox.refresh();
+}
+
+function debounce(func, delay) {
+  let timeout;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
+}
+
+const debouncedScroll = debounce(handleScroll, 100);
+window.addEventListener("scroll", debouncedScroll);
+
+// window.addEventListener('scroll', handleScroll);
+
+let isScrollButtonVisible = false;
+
+function handleScroll() {
+  const distanceFromBodyToViewportTop = window.scrollY;
+  const maxDistance = 1000;
+
+  if (distanceFromBodyToViewportTop >= maxDistance && !isScrollButtonVisible) {
+    isScrollButtonVisible = true;
+    topScroll.addEventListener("click", onTopScroll);
+    topScroll.style.display = "block";
+  } else if (
+    distanceFromBodyToViewportTop < maxDistance &&
+    isScrollButtonVisible
+  ) {
+    isScrollButtonVisible = false;
+    topScroll.removeEventListener("click", onTopScroll);
+    topScroll.style.display = "none";
+  }
+}
+
+function onTopScroll() {
+  window.scroll({
+    top: 0,
+    behavior: "smooth",
+  });
 }
